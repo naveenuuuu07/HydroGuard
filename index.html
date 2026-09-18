@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>HydroGuard | Industrial Water Intelligence</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     BACKGROUND EFFECTS
+===================================================== -->
+
+<div class="background">
+
+    <div class="grid"></div>
+
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+
+    <div class="water-particles">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            💧
+        </div>
+
+        <div>
+
+            <h2>HydroGuard</h2>
+
+            <p>
+                INDUSTRIAL WATER INTELLIGENCE
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav-right">
+
+        <div class="live-indicator">
+
+            <span class="live-dot"></span>
+
+            <span>
+                LIVE MONITORING
+            </span>
+
+        </div>
+
+        <div id="clock">
+            00:00:00
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="container">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            SMART INDUSTRIAL WATER MANAGEMENT
+        </div>
+
+
+        <h1>
+
+            Understand your
+            <span>water.</span>
+
+        </h1>
+
+
+        <p>
+
+            A production-aware monitoring system
+            that detects abnormal water consumption,
+            identifies probable leaks and estimates
+            their impact.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-button"
+                id="startMonitoring">
+
+                <span>▶</span>
+
+                START MONITORING
+
+            </button>
+
+
+            <button
+                class="secondary-button"
+                id="learnMore">
+
+                HOW IT WORKS
+                <span>↓</span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- HERO STATUS -->
+
+    <div class="hero-status">
+
+        <div class="status-ring">
+
+            <div class="ring-inner">
+
+                <span class="status-check">
+                    ✓
+                </span>
+
+                <small>
+                    SYSTEM
+                </small>
+
+                <strong id="systemStatusText">
+                    NORMAL
+                </strong>
+
+            </div>
+
+        </div>
+
+        <p>
+            All monitored zones operational
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     METRIC CARDS
+===================================================== -->
+
+<section class="metrics">
+
+
+    <!-- FLOW -->
+
+    <div class="metric-card">
+
+        <div class="metric-header">
+
+            <span>
+                WATER FLOW
+            </span>
+
+            <div class="metric-icon">
+                💧
+            </div>
+
+        </div>
+
+
+        <div class="metric-value">
+
+            <strong id="flow">
+                540
+            </strong>
+
+            <span>
+                L/min
+            </span>
+
+        </div>
+
+
+        <div class="metric-status normal">
+
+            <span>●</span>
+            Within expected range
+
+        </div>
+
+
+        <div class="metric-wave">
+
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PRESSURE -->
+
+    <div class="metric-card">
+
+        <div class="metric-header">
+
+            <span>
+                PIPE PRESSURE
+            </span>
+
+            <div class="metric-icon">
+                ◉
+            </div>
+
+        </div>
+
+
+        <div class="metric-value">
+
+            <strong id="pressure">
+                4.3
+            </strong>
+
+            <span>
+                bar
+            </span>
+
+        </div>
+
+
+        <div class="metric-status normal">
+
+            <span>●</span>
+            Stable
+
+        </div>
+
+
+        <div class="pressure-line">
+
+            <div class="pressure-fill"></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PRODUCTION -->
+
+    <div class="metric-card">
+
+        <div class="metric-header">
+
+            <span>
+                PRODUCTION
+            </span>
+
+            <div class="metric-icon">
+                ⚙
+            </div>
+
+        </div>
+
+
+        <div class="metric-value">
+
+            <strong id="production">
+                52
+            </strong>
+
+            <span>
+                % capacity
+            </span>
+
+        </div>
+
+
+        <div class="metric-status normal">
+
+            <span>●</span>
+            Normal activity
+
+        </div>
+
+
+        <div class="capacity-bar">
+
+            <div style="width:52%"></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- WATER USE -->
+
+    <div class="metric-card">
+
+        <div class="metric-header">
+
+            <span>
+                DAILY WATER USE
+            </span>
+
+            <div class="metric-icon">
+                ▣
+            </div>
+
+        </div>
+
+
+        <div class="metric-value">
+
+            <strong id="water">
+                32,400
+            </strong>
+
+            <span>
+                litres
+            </span>
+
+        </div>
+
+
+        <div class="metric-status normal">
+
+            <span>●</span>
+            Tracking normally
+
+        </div>
+
+
+        <div class="mini-bars">
+
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section class="dashboard">
+
+
+<!-- =====================================================
+     FACTORY NETWORK
+===================================================== -->
+
+<div class="panel network-panel">
+
+
+    <div class="panel-heading">
+
+        <div>
+
+            <span class="label">
+                FACTORY NETWORK
+            </span>
+
+            <h2>
+                Water Distribution
+            </h2>
+
+        </div>
+
+
+        <div class="online-badge">
+
+            <span></span>
+
+            ONLINE
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FACTORY MAP -->
+
+    <div class="factory-map">
+
+
+        <!-- MAIN -->
+
+        <div class="main-node">
+
+            <div class="node-pulse"></div>
+
+            <div class="node-circle">
+                M
+            </div>
+
+            <strong>
+                MAIN
+            </strong>
+
+            <small>
+                Supply
+            </small>
+
+        </div>
+
+
+
+        <!-- CONNECTION LINES -->
+
+        <div class="pipe pipe-a"></div>
+        <div class="pipe pipe-b"></div>
+        <div class="pipe pipe-c"></div>
+        <div class="pipe pipe-d"></div>
+
+
+
+        <!-- ZONE A -->
+
+        <div class="zone zone-a">
+
+            <div class="zone-circle">
+                A
+            </div>
+
+            <strong>
+                ZONE A
+            </strong>
+
+            <small>
+                Production
+            </small>
+
+            <span class="zone-status">
+                ●
+            </span>
+
+        </div>
+
+
+
+        <!-- ZONE B -->
+
+        <div class="zone zone-b">
+
+            <div class="zone-circle">
+                B
+            </div>
+
+            <strong>
+                ZONE B
+            </strong>
+
+            <small>
+                Storage
+            </small>
+
+            <span class="zone-status">
+                ●
+            </span>
+
+        </div>
+
+
+
+        <!-- ZONE C -->
+
+        <div
+            class="zone zone-c"
+            id="zoneC">
+
+            <div class="zone-circle">
+                C
+            </div>
+
+            <strong>
+                ZONE C
+            </strong>
+
+            <small id="zoneStatus">
+                Cooling
+            </small>
+
+            <span
+                class="zone-status"
+                id="zoneIndicator">
+
+                ●
+
+            </span>
+
+        </div>
+
+
+
+        <!-- ZONE D -->
+
+        <div class="zone zone-d">
+
+            <div class="zone-circle">
+                D
+            </div>
+
+            <strong>
+                ZONE D
+            </strong>
+
+            <small>
+                Utilities
+            </small>
+
+            <span class="zone-status">
+                ●
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- FLOW BAR -->
+
+    <div class="flow-monitor">
+
+        <div>
+
+            <span>
+                LIVE NETWORK FLOW
+            </span>
+
+            <strong id="mapFlow">
+                540 L/min
+            </strong>
+
+        </div>
+
+
+        <div class="flow-track">
+
+            <div class="flow-moving">
+                → → → → → → → → →
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     AI ENGINE
+===================================================== -->
+
+<div class="panel ai-panel">
+
+
+    <div class="panel-heading">
+
+        <div>
+
+            <span class="label">
+                INTELLIGENCE ENGINE
+            </span>
+
+            <h2>
+                AI Analysis
+            </h2>
+
+        </div>
+
+
+        <div
+            class="ai-status"
+            id="aiStatus">
+
+            ● ANALYZING
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ANALYSIS STATE -->
+
+    <div
+        class="analysis-state"
+        id="analysisState">
+
+
+        <div
+            class="analysis-icon"
+            id="stateIcon">
+
+            ✓
+
+        </div>
+
+
+        <div>
+
+            <span>
+                CURRENT STATE
+            </span>
+
+            <strong id="analysisTitle">
+                NETWORK NORMAL
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ALERT -->
+
+    <div
+        class="alert-box"
+        id="alertBox">
+
+
+        <div class="alert-icon">
+            ✓
+        </div>
+
+
+        <div>
+
+            <h3 id="alertTitle">
+                SYSTEM OPERATING NORMALLY
+            </h3>
+
+            <p id="alertText">
+
+                Water consumption is consistent
+                with current production activity.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- CONFIDENCE -->
+
+    <div class="confidence-section">
+
+
+        <div class="confidence-header">
+
+            <span>
+                ANOMALY CONFIDENCE
+            </span>
+
+            <strong id="confidence">
+                8%
+            </strong>
+
+        </div>
+
+
+        <div class="confidence-track">
+
+            <div
+                id="confidenceBar"
+                style="width:8%">
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- SIGNALS -->
+
+    <div class="signals">
+
+
+        <div class="signal">
+
+            <div>
+
+                <span>
+                    FLOW SIGNAL
+                </span>
+
+                <strong id="flowScore">
+                    12%
+                </strong>
+
+            </div>
+
+            <div class="signal-bar">
+
+                <i
+                    id="flowSignalBar"
+                    style="width:12%">
+                </i>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="signal">
+
+            <div>
+
+                <span>
+                    PRESSURE SIGNAL
+                </span>
+
+                <strong id="pressureScore">
+                    9%
+                </strong>
+
+            </div>
+
+            <div class="signal-bar">
+
+                <i
+                    id="pressureSignalBar"
+                    style="width:9%">
+                </i>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="signal">
+
+            <div>
+
+                <span>
+                    PRODUCTION SIGNAL
+                </span>
+
+                <strong id="productionScore">
+                    6%
+                </strong>
+
+            </div>
+
+            <div class="signal-bar">
+
+                <i
+                    id="productionSignalBar"
+                    style="width:6%">
+                </i>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- IMPACT -->
+
+    <div class="impact-grid">
+
+
+        <div class="impact-card">
+
+            <span>
+                LOCATION
+            </span>
+
+            <strong id="location">
+                None
+            </strong>
+
+        </div>
+
+
+        <div class="impact-card">
+
+            <span>
+                LOSS RATE
+            </span>
+
+            <strong id="loss">
+                18 L/min
+            </strong>
+
+        </div>
+
+
+        <div class="impact-card">
+
+            <span>
+                DAILY LOSS
+            </span>
+
+            <strong id="dailyLoss">
+                2,592 L
+            </strong>
+
+        </div>
+
+
+        <div class="impact-card">
+
+            <span>
+                EST. COST
+            </span>
+
+            <strong id="money">
+                ₹156/day
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ACTION BUTTONS -->
+
+    <div class="action-buttons">
+
+
+        <button
+            id="normalBtn"
+            class="control-button normal-button">
+
+            <span>✓</span>
+
+            NORMAL MODE
+
+        </button>
+
+
+        <button
+            id="leakBtn"
+            class="control-button danger-button">
+
+            <span>⚠</span>
+
+            SIMULATE LEAK
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CHART
+===================================================== -->
+
+<section class="panel chart-panel">
+
+
+    <div class="panel-heading">
+
+        <div>
+
+            <span class="label">
+                HISTORICAL ANALYSIS
+            </span>
+
+            <h2>
+                Water Consumption Pattern
+            </h2>
+
+        </div>
+
+
+        <div class="chart-range">
+            LAST 24 HOURS
+        </div>
+
+    </div>
+
+
+
+    <div class="chart-container">
+
+        <div class="chart-y">
+
+            <span>50K</span>
+            <span>40K</span>
+            <span>30K</span>
+            <span>20K</span>
+            <span>10K</span>
+
+        </div>
+
+
+        <svg
+            viewBox="0 0 1000 300"
+            preserveAspectRatio="none">
+
+
+            <defs>
+
+                <linearGradient
+                    id="chartGradient"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+                    <stop
+                        offset="0%"
+                        stop-opacity=".35"/>
+
+                    <stop
+                        offset="100%"
+                        stop-opacity="0"/>
+
+                </linearGradient>
+
+            </defs>
+
+
+            <path
+                class="chart-area"
+                d="
+                M0 230
+                C80 215 100 180 170 200
+                C230 220 250 155 320 170
+                C390 185 410 140 480 155
+                C550 170 570 115 640 135
+                C710 155 730 110 800 125
+                C870 140 900 85 1000 105
+                L1000 300
+                L0 300 Z"/>
+
+
+            <path
+                class="chart-line"
+                d="
+                M0 230
+                C80 215 100 180 170 200
+                C230 220 250 155 320 170
+                C390 185 410 140 480 155
+                C550 170 570 115 640 135
+                C710 155 730 110 800 125
+                C870 140 900 85 1000 105"/>
+
+
+        </svg>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOW IT WORKS
+===================================================== -->
+
+<section
+    class="how-section"
+    id="howItWorks">
+
+
+    <div class="section-title">
+
+        <span class="label">
+            HOW HYDROGUARD THINKS
+        </span>
+
+        <h2>
+            From sensor signals to actionable insight.
+        </h2>
+
+        <p>
+            Instead of looking at water consumption alone,
+            HydroGuard combines multiple signals to
+            understand what is happening inside the factory.
+        </p>
+
+    </div>
+
+
+
+    <div class="process">
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                01
+            </div>
+
+            <div class="process-icon">
+                📡
+            </div>
+
+            <h3>
+                Collect
+            </h3>
+
+            <p>
+                Monitor flow, pressure,
+                production and consumption.
+            </p>
+
+        </div>
+
+
+        <div class="process-arrow">
+            →
+        </div>
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                02
+            </div>
+
+            <div class="process-icon">
+                🧠
+            </div>
+
+            <h3>
+                Analyze
+            </h3>
+
+            <p>
+                Compare current behavior
+                against expected patterns.
+            </p>
+
+        </div>
+
+
+        <div class="process-arrow">
+            →
+        </div>
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                03
+            </div>
+
+            <div class="process-icon">
+                🔍
+            </div>
+
+            <h3>
+                Detect
+            </h3>
+
+            <p>
+                Identify suspicious changes
+                in the water network.
+            </p>
+
+        </div>
+
+
+        <div class="process-arrow">
+            →
+        </div>
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                04
+            </div>
+
+            <div class="process-icon">
+                🚨
+            </div>
+
+            <h3>
+                Alert
+            </h3>
+
+            <p>
+                Show the probable zone,
+                water loss and impact.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div>
+
+        <strong>
+            HydroGuard
+        </strong>
+
+        <span>
+            Production-Aware Industrial Water Intelligence
+        </span>
+
+    </div>
+
+
+    <span>
+        Prototype • Simulated Sensor Data
+    </span>
+
+</footer>
+
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
