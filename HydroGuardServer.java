@@ -18,15 +18,33 @@ public class HydroGuardServer {
 
     public static void main(String[] args) throws Exception {
 
+        // =====================================================
+        // RENDER DEPLOYMENT CONFIGURATION
+        // =====================================================
+
+        // Render provides the PORT environment variable.
+        // If running locally, it will use port 8080.
+        int port = Integer.parseInt(
+                System.getenv().getOrDefault("PORT", "8080")
+        );
+
+        // Listen on all network interfaces so Render can access
+        // the Java server.
         HttpServer server = HttpServer.create(
-                new InetSocketAddress(8080),
+                new InetSocketAddress("0.0.0.0", port),
                 0
         );
 
-        // Serve the website
+        // =====================================================
+        // WEBSITE
+        // =====================================================
+
         server.createContext("/", HydroGuardServer::serveWebsite);
 
-        // API endpoints
+        // =====================================================
+        // API ENDPOINTS
+        // =====================================================
+
         server.createContext("/api/status", HydroGuardServer::status);
         server.createContext("/api/leak", HydroGuardServer::simulateLeak);
         server.createContext("/api/normal", HydroGuardServer::normalMode);
@@ -36,6 +54,10 @@ public class HydroGuardServer {
 
         server.setExecutor(null);
 
+        // =====================================================
+        // SERVER INFORMATION
+        // =====================================================
+
         System.out.println();
         System.out.println("================================================");
         System.out.println("              HYDROGUARD SERVER");
@@ -44,8 +66,7 @@ public class HydroGuardServer {
         System.out.println();
         System.out.println("Java backend started successfully.");
         System.out.println();
-        System.out.println("Website:");
-        System.out.println("http://localhost:8080");
+        System.out.println("Server listening on port: " + port);
         System.out.println();
         System.out.println("Waiting for website requests...");
         System.out.println("================================================");
@@ -71,10 +92,20 @@ public class HydroGuardServer {
 
             String response = "404 - File Not Found";
 
-            exchange.sendResponseHeaders(404, response.length());
+            exchange.getResponseHeaders()
+                    .set("Content-Type", "text/plain; charset=UTF-8");
+
+            exchange.sendResponseHeaders(
+                    404,
+                    response.getBytes(StandardCharsets.UTF_8).length
+            );
 
             OutputStream output = exchange.getResponseBody();
-            output.write(response.getBytes(StandardCharsets.UTF_8));
+
+            output.write(
+                    response.getBytes(StandardCharsets.UTF_8)
+            );
+
             output.close();
 
             return;
@@ -87,12 +118,21 @@ public class HydroGuardServer {
 
         byte[] data = readFile(file);
 
-        exchange.sendResponseHeaders(200, data.length);
+        exchange.sendResponseHeaders(
+                200,
+                data.length
+        );
 
         OutputStream output = exchange.getResponseBody();
+
         output.write(data);
+
         output.close();
     }
+
+    // =====================================================
+    // READ WEBSITE FILE
+    // =====================================================
 
     static byte[] readFile(File file) throws IOException {
 
@@ -104,6 +144,10 @@ public class HydroGuardServer {
 
         return data;
     }
+
+    // =====================================================
+    // CONTENT TYPE
+    // =====================================================
 
     static String getContentType(String path) {
 
@@ -117,6 +161,26 @@ public class HydroGuardServer {
 
         if (path.endsWith(".js")) {
             return "application/javascript; charset=UTF-8";
+        }
+
+        if (path.endsWith(".json")) {
+            return "application/json; charset=UTF-8";
+        }
+
+        if (path.endsWith(".png")) {
+            return "image/png";
+        }
+
+        if (path.endsWith(".jpg") || path.endsWith(".jpeg")) {
+            return "image/jpeg";
+        }
+
+        if (path.endsWith(".svg")) {
+            return "image/svg+xml";
+        }
+
+        if (path.endsWith(".ico")) {
+            return "image/x-icon";
         }
 
         return "text/plain; charset=UTF-8";
@@ -230,6 +294,7 @@ public class HydroGuardServer {
 
         zoneIsolated = true;
 
+        // Simulation values after isolation
         flow = 610;
         water = 35000;
 
@@ -240,6 +305,8 @@ public class HydroGuardServer {
                         + "\"flow\":" + flow + ","
                         + "\"water\":" + water + ","
                         + "\"lossPerMinute\":35,"
+                        + "\"dailyLoss\":5040,"
+                        + "\"financialLoss\":302,"
                         + "\"message\":\"Zone C isolation simulated successfully\""
                         + "}";
 
@@ -274,7 +341,7 @@ public class HydroGuardServer {
     }
 
     // =====================================================
-    // RESET
+    // RESET SYSTEM
     // =====================================================
 
     static void resetSystem(HttpExchange exchange) throws IOException {
@@ -308,13 +375,21 @@ public class HydroGuardServer {
 
     static double calculateConfidence() {
 
+        // Prototype scoring model:
+        // Flow anomaly       = 40%
+        // Pressure anomaly   = 35%
+        // Production context = 25%
+
         double flowScore = 92;
         double pressureScore = 81;
         double productionScore = 88;
 
-        return Math.round(
-                (flowScore + pressureScore + productionScore) / 3
-        );
+        double weightedScore =
+                (flowScore * 0.40)
+                + (pressureScore * 0.35)
+                + (productionScore * 0.25);
+
+        return Math.round(weightedScore);
     }
 
     // =====================================================
@@ -341,7 +416,7 @@ public class HydroGuardServer {
     }
 
     // =====================================================
-    // SEND JSON
+    // SEND JSON RESPONSE
     // =====================================================
 
     static void sendJSON(
@@ -350,10 +425,16 @@ public class HydroGuardServer {
     ) throws IOException {
 
         exchange.getResponseHeaders()
-                .set("Content-Type", "application/json; charset=UTF-8");
+                .set(
+                        "Content-Type",
+                        "application/json; charset=UTF-8"
+                );
 
         exchange.getResponseHeaders()
-                .set("Access-Control-Allow-Origin", "*");
+                .set(
+                        "Access-Control-Allow-Origin",
+                        "*"
+                );
 
         byte[] data =
                 json.getBytes(StandardCharsets.UTF_8);
